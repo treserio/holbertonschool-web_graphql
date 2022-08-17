@@ -44,14 +44,22 @@ const RootQuery = new GraphQLObjectType({
       args: {
         id: {type: GraphQLID},
       },
-      resolve: (parent, args) => lod.find(tasks, {id: args.id}),
+      resolve: (_, args) => lod.find(tasks, {id: args.id}),
+    },
+    tasks: {
+      type: new GraphQLList(TaskType),
+      resolve: () => tasks,
     },
     project: {
       type: ProjectType,
       args: {
         id: {type: GraphQLID},
       },
-      resolve: (parent, args) => lod.find(projects, {id: args.id}),
+      resolve: (_, args) => lod.find(projects, {id: args.id}),
+    },
+    projects: {
+      type: new GraphQLList(ProjectType),
+      resolve: () => projects,
     },
   },
 });
