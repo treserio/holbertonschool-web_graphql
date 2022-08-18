@@ -1,5 +1,4 @@
 const gql = require('graphql');
-const lod = require('lodash');
 const Task = require('../models/task');
 const Project = require('../models/project');
 
