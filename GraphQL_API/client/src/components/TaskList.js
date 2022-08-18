@@ -2,24 +2,18 @@ import {
   useState,
   //useEffect
 } from "react";
-const { gql } = require('apollo-boost');
-const { graphql } = require('react-apollo');
 // components
 import TaskDetails from './TaskDetails';
+const { gql } = require('apollo-boost');
+const { graphql } = require('react-apollo');
+
+
 
 function TaskList(props) {
   const [state, setState] = useState({
     selected: null
   });
 
-  const getTasksQuery = gql`
-  {
-    tasks {
-      id
-      title
-    }
-  }
-  `
   console.log(props);
 
   return (
@@ -31,6 +25,15 @@ function TaskList(props) {
     </div>
   );
 }
+
+const getTasksQuery = gql`
+{
+  tasks {
+    id
+    title
+  }
+}
+`
 
 // export default TaskList;
 export default graphql(getTasksQuery)(TaskList);
