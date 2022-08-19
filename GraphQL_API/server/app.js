@@ -9,13 +9,13 @@ const mongoConf = require('./mongoConf');
 
 const app = express();
 
+app.use(cors());
+
 app
-  .use('/graphql',graphqlHTTP({
+  .use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
   }))
-  .use(cors())
-
   .listen(4000, () => {
     console.log('now listening for request on port 4000');
   });
